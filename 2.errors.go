@@ -1,5 +1,4 @@
-
-
+//...
 
 var id int
 var name string
@@ -17,10 +16,14 @@ func main() {
 
 	//...
 
-	err := getUserInfo()
-	if err != nil {
-		fmt.Printf("FAIL: %+v\n", err)
+	if err := getUserInfo(); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			fmt.Printf("FAIL: %+v\n", err)
+		} else {
+			fmt.Printf(err)
+		}
 	}
+
 	//...
 }
 
