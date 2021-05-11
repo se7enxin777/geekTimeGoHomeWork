@@ -36,9 +36,9 @@ func main() {
 
 	g.Go(func() error {
 		select {
-			case <-ctx.Done():
+		case <-ctx.Done():
 				fmt.Println("errgroup quit")
-			case <-serverQuitchan:
+		case <-serverQuitchan:
 				fmt.Println("server quit")
 		}
 
